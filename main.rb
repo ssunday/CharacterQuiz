@@ -4,7 +4,7 @@ enable :sessions
 
 get '/' do
   @title = "Home"
-  session[:scores] = [0,0,0,0]
+  session.clear
   erb :home
 end
 
@@ -22,11 +22,11 @@ end
 
 post '/quiz' do
   @title = "Quiz Scoring"
-
+  session[:scores] = [0,0,0,0]
   scoring_matrix = {
-    "question 1" => [[2,1,0,0],[0,0,2,1],[2,2,0,1],[0,0,1,2]],
+    "question 1" => [[2,1,0,0],[0,0,2,1],[1,2,0,1],[0,0,1,2]],
     "question 2" => [[1,0,1,1],[2,1,0,2],[0,0,2,0]],
-    "question 3" => [[2,0,0,2],[2,1,2,0],[0,2,0,0],[1,0,0,1]],
+    "question 3" => [[2,0,0,2],[1,1,2,0],[0,2,0,0],[1,0,0,1]],
     "question 4" => [[1,2,1,1],[1,0,1,1]],
     "question 5" => [[0,0,2,1],[2,2,0,1]]
   }
@@ -35,20 +35,18 @@ post '/quiz' do
     question_scores = scores[params[question].to_i]
     session[:scores] = session[:scores].zip(question_scores).map { |x, y| y + x }
   end
-
   redirect '/results'
 end
 
 get '/results' do
   @title = "Quiz Results"
-  @character = nil
+  @character = "FAIL"
   characters = ["Cyclone", "King", "Spellbinder", "Farrco"]
-
+  #max = session[:scores].max
   for i in 0..characters.length
     if session[:scores].max == session[:scores][i]
       @character = characters[i]
     end
   end
-
   erb :results
 end
