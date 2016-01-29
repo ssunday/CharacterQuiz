@@ -1,9 +1,11 @@
 require 'sinatra'
+require_relative "lib/questions_and_scoring.rb"
 
 use Rack::Session::Cookie, :key => 'rack.session',
                            :path => '/',
                            :expire_after => 2592000, # In seconds
                            :secret => 'spine'
+include QuestionsAndScoring
 
 get '/' do
   @title = "Home"
@@ -26,6 +28,7 @@ end
 post '/quiz' do
   @title = "Quiz Scoring"
   session[:scores] = [0,0,0,0]
+
   scoring_matrix = {
     "question 1" => [[2,0,1,0],[0,2,0,1],[1,0,2,1],[0,1,0,2]],
     "question 2" => [[1,1,0,1],[2,0,1,2],[0,2,0,0]],
@@ -38,6 +41,7 @@ post '/quiz' do
     question_scores = scores[params[question].to_i]
     session[:scores] = session[:scores].zip(question_scores).map { |x, y| y + x }
   end
+
   redirect '/results'
 end
 
@@ -45,11 +49,24 @@ get '/results' do
   @title = "Quiz Results"
   @character = "FAIL"
   characters = ["Cyclone", "King", "Spellbinder", "Farrco"]
-  #max = session[:scores].max
+  max_character_score = session[:scores].max
+
   for i in 0..characters.length
-    if session[:scores].max == session[:scores][i]
+    if max_character_score == session[:scores][i]
       @character = characters[i]
     end
   end
+
   erb :results
+end
+
+get '/breakdown' do
+  @title = "Quiz Results Breakdown"
+  @scoring_breakdown = match_up_characters_to_percentages(session[:scores])
+  erb :breakdown
+end
+
+not_found do
+	@title = "Not found!"
+  erb :not_found
 end

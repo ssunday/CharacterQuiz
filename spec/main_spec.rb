@@ -9,23 +9,28 @@ module RSpecMixin
   include Rack::Test::Methods
   def app() Sinatra::Application end
 end
+
 RSpec.configure { |c| c.include RSpecMixin }
 
 describe "Character Quiz Web App" do
 
-  it "succesfully gets home page" do
-    get '/'
-    expect(last_response).to be_ok
-  end
+  describe "gets" do
 
-  it "succesfully gets quiz page" do
-    get '/quiz'
-    expect(last_response).to be_ok
-  end
+    it "home page" do
+      get '/'
+      expect(last_response).to be_ok
+    end
 
-  it "succesfully gets results page" do
-    get '/results'
-    expect(last_response).to be_ok
+    it "quiz page" do
+      get '/quiz'
+      expect(last_response).to be_ok
+    end
+
+    it "results page" do
+      get '/results'
+      expect(last_response).to be_ok
+    end
+
   end
 
 end
