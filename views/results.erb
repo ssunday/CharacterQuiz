@@ -3,9 +3,12 @@
   <h1 style="text-align:center;"> Your Character is: <%=@character%>!</h1>
   <p style="text-align:center;"><img src="images/<%=@character%>.png" alt="<%=@character%>" style="width:320px;height:510px;"></p>
   <br>
-  <h2> To see your character breakdown, click this button. </h2>
   <form action="/breakdown">
-    <button name="scoring_breakdown" type="submit">See Breakdown</button>
+    <button name="scoring_breakdown" type="submit">See Character Results Breakdown</button>
+  </form>
+  <br>
+  <form action="/quiz">
+    <button name="play_quiz_again" type="submit">Play Quiz Again</button>
   </form>
 </body>
 </html>
