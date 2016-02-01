@@ -2,22 +2,36 @@ module QuestionsAndScoring
 
   QUESTIONS_AND_ANSWERS = {
     "What would you say is your best quality?" => ["Intelligence","Loyalty","Creativity","Compassion"],
-    "Which ‘art’ is most important?" => ["Rationality" , "Spirituality","Magic"],
+    "Which ‘art’ is most important?" => ["Rationality" , "Spirituality", "Magic"],
     "If you could have one of these powers, which would you choose?" =>["Flight", "Control over an element","Magic", "Strength"],
     "Which is better: Organic or Non-Organics" => ["Organic", "Non-Organic"],
     "What do you do when confronted with a problem?" => ["Stick with it.", "Look for a different angle."],
     "What would your iconic piece of attire be?" => ["Helmet", "Cape", "Scarf", "Necklace"],
-    "Should Tyra Tarkush (the holy language) be spoken?" => ["Yes", "Only in special circumstances", "No"]
+    "Should Tyra Tarkush (the holy language) be spoken?" => ["Yes", "Only in special circumstances", "No"],
+    "Which one of these Gods would you be mostly likely to worship?" => ["Ra", "Hades", "Ganesh"],
+    "Favorite color?" => ["Red", "Green", "Yellow", "Blue", "Black", "White"],
+    "Dark or Light?" => ["Dark", "Light"],
+    "How would you travel?" => ["Space ship", "Technological Teleportation", "Magical Teleportation", "Rifts"],
+    "What is your hobby?" => ["Reading", "Philosophy", "Tinkering", "Exploring"],
+    "Favorite music genre?" => ["Hip-hop", "Classical", "Rock", "Electronic"],
+    "Hogwarts House?" => ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
     }
 
   SCORING_MATRIX = {
     "question 1" => [[2,0,1,0],[0,2,0,1],[1,0,2,1],[0,1,0,2]],
     "question 2" => [[1,1,0,1],[2,0,1,2],[0,2,0,0]],
-    "question 3" => [[2,0,0,2],[1,2,1,0],[0,0,2,0],[1,0,0,1]],
+    "question 3" => [[2,0,1,2],[1,2,1,0],[0,0,2,0],[1,0,0,1]],
     "question 4" => [[1,1,2,1],[1,1,0,1]],
-    "question 5" => [[0,2,0,1],[2,0,1,1]],
-    "question 6" => [[1,2,0,0],[2,0,0,0],[0,0,1,1],[0,1,1,1]],
-    "question 7" => [[2,0,1,0],[1,0,1,2],[0,2,0,0]]
+    "question 5" => [[0,2,1,1],[2,0,1,1]],
+    "question 6" => [[1,2,0,0],[2,0,0,0],[0,0,2,1],[0,1,1,1]],
+    "question 7" => [[2,0,1,0],[1,0,1,2],[0,2,0,0]],
+    "question 8" => [[0,0,2,1],[0,1,0,0],[0,1,1,1]],
+    "question 9" => [[1,0,1,1],[1,2,0,2],[0,0,2,0],[1,0,1,0],[1,1,0,0],[0,0,1,0]],
+    "question 10" => [[2,2,0,0],[0,1,1,1]],
+    "question 11" => [[1,2,0,0],[0,1,0,2],[0,0,2,1],[1,0,1,2]],
+    "question 12" => [[0,1,2,1],[1,0,0,1],[2,0,0,0],[1,1,1,1]],
+    "question 13" => [[2,0,0,1],[0,2,1,0],[0,2,0,0],[0,0,1,1]],
+    "question 14" => [[0,2,0,1],[2,0,1,0],[0,1,0,2],[1,0,2,0]]
   }
 
   CHARACTERS = ["Cyclone", "King", "Spellbinder", "Farrco"]
@@ -33,13 +47,12 @@ module QuestionsAndScoring
 
   def determine_character(total_score)
     max_character_score = total_score.max
-    for i in 0..CHARACTERS.length
+    for i in 0..(CHARACTERS.length - 1)
       if max_character_score == total_score[i]
         return CHARACTERS[i]
       end
     end
   end
-
 
   def total_of_each_character_score
     total_scores = [0.0,0.0,0.0,0.0]
@@ -48,6 +61,7 @@ module QuestionsAndScoring
         total_scores = total_scores.zip(scores[i]).map { |score1, score2| score1 + score2 }
       end
     end
+    puts total_scores
     total_scores
   end
 
