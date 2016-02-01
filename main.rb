@@ -1,5 +1,12 @@
 require 'sinatra'
+require 'data_mapper'
+require 'dm-mysql-adapter'
 require_relative "lib/questions_and_scoring.rb"
+require_relative "lib/quiz.rb"
+
+# DataMapper.setup(:default, 'mysql://pjxincco_charqui:vB$cl%{0G,Th@box1284.bluehost.com/pjxincco_characterquiz')
+# DataMapper.auto_migrate!
+# DataMapper.finalize
 
 use Rack::Session::Cookie, :key => 'rack.session',
                            :path => '/',
@@ -29,6 +36,8 @@ end
 get '/results' do
   @title = "Quiz Results"
   @character = determine_character(session[:scores])
+  @quiz = Quiz.new
+  @quiz.character = @character
   erb :results
 end
 
@@ -37,6 +46,12 @@ get '/breakdown' do
   @scoring_breakdown = match_up_characters_to_percentages(session[:scores])
   erb :breakdown
 end
+
+# get '/total_result_breakdown' do
+#   quizzes = Quiz.all
+#   @quiz_result_breakdown = tally_quiz_results(quizzes)
+#   erb :total_result_breakdown
+# end
 
 not_found do
 	@title = "Not found!"

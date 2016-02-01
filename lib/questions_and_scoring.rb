@@ -66,7 +66,7 @@ module QuestionsAndScoring
   end
 
   def percentage_of_each_character(scores)
-    percentages = [0,0,0,0]
+    percentages = [0.0,0.0,0.0,0.0]
     total = total_of_each_character_score
     for i in 0..(scores.length - 1)
       percentages[i] = (scores[i]/total[i])*100.0
@@ -75,12 +75,36 @@ module QuestionsAndScoring
   end
 
   def match_up_characters_to_percentages(scores)
-    characters_percentages_hash = {}
+    characters_percentages = {}
     percentages = percentage_of_each_character(scores)
     for i in 0..(percentages.length - 1)
-      characters_percentages_hash[CHARACTERS[i]] = percentages[i]
+      characters_percentages[CHARACTERS[i]] = percentages[i]
     end
-    characters_percentages_hash
+    characters_percentages
+  end
+
+  def tally_quiz_results(quiz_results)
+    total_quiz_takers = 0
+    final_results = [0,0,0,0]
+    quiz_results.each do |result|
+      for i in 0..(CHARACTERS.length - 1)
+        if result.character.eql?(CHARACTERS[i])
+          final_results[i] += 1
+        end
+      end
+      total_quiz_takers += 1
+    end
+
+    percentages = [0.0,0.0,0.0,0.0]
+    for i in 0..(final_results.length - 1)
+      percentages[i] = (final_results[i]/total_quiz_takers)*100.0
+    end
+
+    quiz_percentages = {}
+    for i in 0..(percentages.length - 1)
+       quiz_percentages[CHARACTERS[i]] = percentages[i]
+    end
+    quiz_percentages
   end
 
 end
