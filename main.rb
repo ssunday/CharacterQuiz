@@ -1,12 +1,11 @@
 require 'sinatra'
-require 'data_mapper'
-require 'dm-mysql-adapter'
+#require 'data_mapper'
 require_relative "lib/questions_and_scoring.rb"
 require_relative "lib/quiz.rb"
 
-# DataMapper.setup(:default, 'mysql://pjxincco_charqui:vB$cl%{0G,Th@box1284.bluehost.com/pjxincco_characterquiz')
-# DataMapper.auto_migrate!
-# DataMapper.finalize
+#DataMapper.setup(:default, 'mysql://pjxincco_charqui:vB$cl%{0G,Th@localhost/pjxincco_characterquiz')
+#DataMapper.auto_migrate!
+#DataMapper.finalize
 
 use Rack::Session::Cookie, :key => 'rack.session',
                            :path => '/',
