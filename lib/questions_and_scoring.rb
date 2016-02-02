@@ -61,7 +61,6 @@ module QuestionsAndScoring
         total_scores = total_scores.zip(scores[i]).map { |score1, score2| score1 + score2 }
       end
     end
-    puts total_scores
     total_scores
   end
 
