@@ -35,10 +35,5 @@ describe QuestionsAndScoring do
 
   end
 
-  describe "#total_quiz_score" do
-    xit "correctly sums up quiz scores" do
-
-    end
-  end
 
 end

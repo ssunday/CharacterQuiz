@@ -3,24 +3,6 @@
 	<title><%= @title %> </title>
 </head>
 <body>
-<form action="/quiz" method="post">
-	<% question_counter  = 1 %>
-  <% @questions_and_answers.each do |question, answers| %>
-    <br>
-    <h2> <%= question %> </h2>
-		<br>
-		<% answer_counter = 0 %>
-    <% answers.each do |answer| %>
-      <label><%=answer%></label>
-			<input type="radio" name="question <%=question_counter%>" value= "<%=answer_counter%>" checked/>
-			<% answer_counter += 1 %>
-			<br>
-    <% end %>
-		<% question_counter += 1 %>
-  <% end %>
-	<br>
-	<br>
-	<input type="submit">
-</form>
+	<%= @view_quiz.show_questions_and_answers %>
 </body>
 </html>

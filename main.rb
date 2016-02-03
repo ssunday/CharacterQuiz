@@ -1,6 +1,9 @@
 require 'sinatra'
 require_relative "lib/questions_and_scoring.rb"
 require_relative "lib/quiz.rb"
+require_relative "presenters/breakdown_page.rb"
+require_relative "presenters/results_page.rb"
+require_relative "presenters/quiz_page.rb"
 
 use Rack::Session::Cookie, :key => 'rack.session',
                            :path => '/',
@@ -17,7 +20,7 @@ end
 
 get '/quiz' do
   @title = "Quiz"
-  @questions_and_answers = QUESTIONS_AND_ANSWERS
+  @view_quiz = QuizPage.new(QUESTIONS_AND_ANSWERS)
   erb :quiz
 end
 
@@ -29,23 +32,15 @@ end
 
 get '/results' do
   @title = "Quiz Results"
-  @character = determine_character(session[:scores])
-  @quiz = Quiz.new
-  @quiz.character = @character
+  @view_results = ResultsPage.new(determine_character(session[:scores]))
   erb :results
 end
 
 get '/breakdown' do
   @title = "Quiz Results Breakdown"
-  @scoring_breakdown = match_up_characters_to_percentages(session[:scores])
+  @view_breakdown = BreakdownPage.new(match_up_characters_to_percentages(session[:scores]))
   erb :breakdown
 end
-
-# get '/total_result_breakdown' do
-#   quizzes = Quiz.all
-#   @quiz_result_breakdown = tally_quiz_results(quizzes)
-#   erb :total_result_breakdown
-# end
 
 not_found do
 	@title = "Not found!"

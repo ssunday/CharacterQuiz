@@ -1,10 +1,7 @@
 <html>
 <body>
   <h2> This is the breakdown of what characters you are. </h2>
-  <% @scoring_breakdown.each do |character, percentage| %>
-    <h2> <%= character %> </h2>
-    <h2> <%=percentage.round%>% <progress value="<%=percentage%>" max="100"></progress></h2>
-  <% end %>
+  <%= @view_breakdown.show_percentage_breakdown %>
   <br>
   <form action="/quiz">
     <button name="play_quiz_again" type="submit">Play Quiz Again</button>
