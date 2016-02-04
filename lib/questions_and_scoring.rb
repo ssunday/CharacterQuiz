@@ -4,7 +4,7 @@ module QuestionsAndScoring
     "What would you say is your best quality?" => ["Intelligence","Loyalty","Creativity","Compassion"],
     "Which ‘art’ is most important?" => ["Rationality" , "Spirituality", "Magic"],
     "If you could have one of these powers, which would you choose?" =>["Flight", "Control over an element","Magic", "Strength"],
-    "Which is better: Organic or Non-Organics" => ["Organic", "Non-Organic"],
+    "Which is better: Organic or Non-Organic" => ["Organic", "Non-Organic"],
     "What do you do when confronted with a problem?" => ["Stick with it.", "Look for a different angle."],
     "What would your iconic piece of attire be?" => ["Helmet", "Cape", "Scarf", "Necklace"],
     "Should Tyra Tarkush (the holy language) be spoken?" => ["Yes", "Only in special circumstances", "No"],
