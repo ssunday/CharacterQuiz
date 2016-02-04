@@ -43,6 +43,6 @@ get '/breakdown' do
 end
 
 not_found do
-	@title = "Not found!"
+	@title = "Not Found!"
   erb :not_found
 end

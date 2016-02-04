@@ -34,4 +34,11 @@ describe "Character Quiz Web App" do
     expect(last_request.path).to eq('/results')
   end
 
+  it "post quiz redirects to results and can go to breakdown" do
+    post '/quiz'
+    follow_redirect!
+    get '/breakdown'
+    expect(last_response).to be_ok
+  end
+
 end
