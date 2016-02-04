@@ -1,6 +1,5 @@
 require 'sinatra'
 require_relative "lib/questions_and_scoring.rb"
-require_relative "lib/quiz.rb"
 require_relative "presenters/breakdown_page.rb"
 require_relative "presenters/results_page.rb"
 require_relative "presenters/quiz_page.rb"
