@@ -14,24 +14,26 @@ module QuestionsAndScoring
     "How would you travel?" => ["Space ship", "Technological Teleportation", "Magical Teleportation", "Rifts"],
     "What is your hobby?" => ["Reading", "Philosophy", "Tinkering", "Exploring"],
     "Favorite music genre?" => ["Hip-hop", "Classical", "Rock", "Electronic"],
-    "Hogwarts House?" => ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
+    "Hogwarts House?" => ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"],
+    "What do you do when someone insults you?" => ["Insult them back wittily", "Fight for your honor", "Take it in stride", "Ignore"]
     }
 
   SCORING_MATRIX = {
-    "question 1" => [[2,0,1,0],[0,2,0,1],[1,0,2,1],[0,1,0,2]],
-    "question 2" => [[1,1,0,1],[2,0,1,2],[0,2,0,0]],
-    "question 3" => [[2,0,1,2],[1,2,1,0],[0,0,2,0],[1,0,0,1]],
-    "question 4" => [[1,1,2,1],[1,1,0,1]],
+    "question 1" => [[2,0,1,0],[0,2,0,1],[1,0,2,0],[0,1,0,2]],
+    "question 2" => [[1,2,0,1],[2,1,1,2],[0,0,2,0]],
+    "question 3" => [[2,0,1,2],[1,2,1,0],[0,0,2,0],[1,1,0,2]],
+    "question 4" => [[1,1,2,0],[1,1,0,2]],
     "question 5" => [[0,2,1,1],[2,0,1,1]],
-    "question 6" => [[1,2,0,0],[2,0,0,0],[0,0,2,1],[0,1,1,1]],
-    "question 7" => [[2,0,1,0],[1,0,1,2],[0,2,0,0]],
+    "question 6" => [[1,2,0,0],[2,0,0,0],[0,0,2,1],[0,1,1,2]],
+    "question 7" => [[2,0,1,0],[1,1,1,2],[0,2,0,0]],
     "question 8" => [[0,0,2,1],[0,1,0,0],[0,1,1,1]],
-    "question 9" => [[1,0,1,1],[1,2,0,2],[0,0,2,0],[1,0,1,0],[1,1,0,0],[0,0,1,0]],
-    "question 10" => [[2,2,0,0],[0,1,1,1]],
-    "question 11" => [[1,2,0,0],[0,1,0,2],[0,0,2,1],[1,0,1,2]],
+    "question 9" => [[1,0,1,2],[1,2,0,2],[0,0,2,0],[1,0,0,0],[2,2,0,0],[0,0,1,0]],
+    "question 10" => [[2,2,1,0],[0,1,1,2]],
+    "question 11" => [[1,2,0,0],[0,1,0,2],[0,0,2,0],[1,0,1,2]],
     "question 12" => [[0,1,2,1],[1,0,0,1],[2,0,0,0],[1,1,1,1]],
-    "question 13" => [[2,0,0,1],[0,2,1,0],[0,2,0,0],[0,0,1,1]],
-    "question 14" => [[0,2,0,1],[2,0,1,0],[0,1,0,2],[1,0,2,0]]
+    "question 13" => [[2,0,0,1],[1,2,1,0],[0,1,0,0],[0,0,1,1]],
+    "question 14" => [[0,2,0,1],[2,0,1,0],[0,1,0,2],[1,0,2,0]],
+    "question 15" => [[1,2,0,0],[2,1,0,0],[0,0,2,1],[0,0,1,2]]
   }
 
   CHARACTERS = ["Cyclone", "King", "Spellbinder", "Farrco"]
