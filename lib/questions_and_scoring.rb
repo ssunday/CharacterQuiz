@@ -15,7 +15,10 @@ module QuestionsAndScoring
     "What is your hobby?" => ["Reading", "Philosophy", "Tinkering", "Exploring"],
     "Favorite music genre?" => ["Hip-hop", "Classical", "Rock", "Electronic"],
     "Hogwarts House?" => ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"],
-    "What do you do when someone insults you?" => ["Insult them back wittily", "Fight for your honor", "Take it in stride", "Ignore"]
+    "What do you do when someone insults you?" => ["Insult them back wittily", "Fight for your honor", "Take it in stride", "Ignore"],
+    "How do you feel about Humans?" => ["Strange creatures", "Inciting", "No opinion"],
+    "Element?" => ["Fire", "Water", "Air", "Earth"],
+    "Sun or Moon?" => ["Sun", "Moon"]
     }
 
   SCORING_MATRIX = {
@@ -33,7 +36,10 @@ module QuestionsAndScoring
     "question 12" => [[0,1,2,1],[1,0,0,1],[2,0,0,0],[1,1,1,1]],
     "question 13" => [[2,0,0,1],[1,2,1,0],[0,1,0,0],[0,0,1,1]],
     "question 14" => [[0,2,0,1],[2,0,1,0],[0,1,0,2],[1,0,2,0]],
-    "question 15" => [[1,2,0,0],[2,1,0,0],[0,0,2,1],[0,0,1,2]]
+    "question 15" => [[1,2,0,0],[2,1,0,0],[0,0,2,1],[0,0,1,2]],
+    "question 16" => [[1,2,1,0],[2,1,0,0],[0,0,2,3]],
+    "question 17" => [[0,1,0,2],[2,0,1,0],[0,0,2,0],[1,2,0,1]],
+    "question 18" => [[0,1,2,1],[2,1,0,1]]
   }
 
   CHARACTERS = ["Cyclone", "King", "Spellbinder", "Farrco"]
