@@ -18,7 +18,9 @@ module QuestionsAndScoring
     "What do you do when someone insults you?" => ["Insult them back wittily", "Fight for your honor", "Take it in stride", "Ignore"],
     "How do you feel about Humans?" => ["Strange creatures", "Inciting", "No opinion"],
     "Element?" => ["Fire", "Water", "Air", "Earth"],
-    "Sun or Moon?" => ["Sun", "Moon"]
+    "Sun or Moon?" => ["Sun", "Moon"],
+    "Do you use social media?" => ["Yes", "Occasionally", "No"],
+    "Which are you more?" => ["Extroverted", "Introverted"]
     }
 
   SCORING_MATRIX = {
@@ -39,7 +41,9 @@ module QuestionsAndScoring
     "question 15" => [[1,2,0,0],[2,1,0,0],[0,0,2,1],[0,0,1,2]],
     "question 16" => [[1,2,1,0],[2,1,0,0],[0,0,2,3]],
     "question 17" => [[0,1,0,2],[2,0,1,0],[0,0,2,0],[1,2,0,1]],
-    "question 18" => [[0,1,2,1],[2,1,0,1]]
+    "question 18" => [[0,1,2,1],[2,1,0,1]],
+    "question 19" => [[1,0,0,2],[2,1,2,1],[0,2,1,0]],
+    "question 20" => [[2,0,1,1],[0,2,1,1]]
   }
 
   CHARACTERS = ["Cyclone", "King", "Spellbinder", "Farrco"]
@@ -76,7 +80,7 @@ module QuestionsAndScoring
     percentages = [0.0,0.0,0.0,0.0]
     total = total_of_each_character_score
     for i in 0..(scores.length - 1)
-      percentages[i] = (scores[i]/total[i])*100.0
+      percentages[i] = ((scores[i]/total[i])*100.0).round
     end
     percentages
   end

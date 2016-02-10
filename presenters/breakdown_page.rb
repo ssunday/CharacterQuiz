@@ -20,7 +20,7 @@ class BreakdownPage
   end
 
   def percentage_bar(percentage)
-    "<h2> #{percentage.round}%<progress value='#{percentage}' max='100'></progress></h2>"
+    "<h2> #{percentage}%<progress value='#{percentage}' max='100'></progress></h2>"
   end
 
 end
