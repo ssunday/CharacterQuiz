@@ -1,7 +1,5 @@
 require 'sinatra'
 require_relative 'lib/questions_and_scoring.rb'
-require_relative 'presenters/breakdown_page.rb'
-require_relative 'presenters/results_page.rb'
 require_relative 'presenters/quiz_page.rb'
 
 include QuestionsAndScoring
@@ -16,8 +14,8 @@ post '/results' do
   @title = 'Quiz Results'
 
   scores = total_quiz_score(params)
-  @view_results = ResultsPage.new(determine_character(scores))
-  @view_breakdown = BreakdownPage.new(match_up_characters_to_percentages(scores))
+  @character = determine_character(scores)
+  @scoring_breakdown = match_up_characters_to_percentages(scores)
 
   erb :results
 end

@@ -27,7 +27,7 @@ class QuizPage
   end
 
   def insert_question(question)
-    "<br><h2>#{question}</h2><br>"
+    "<br><h3>#{question}</h3>"
   end
 
   def insert_answer(answer, question_counter, answer_counter)
