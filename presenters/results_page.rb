@@ -1,11 +1,10 @@
 class ResultsPage
-
   def initialize(character)
     @character = character
   end
 
   def show_character_and_image
-    character_and_image = ""
+    character_and_image = ''
     character_and_image += character_name_message
     character_and_image += character_image
     character_and_image

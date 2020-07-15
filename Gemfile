@@ -1,3 +1,11 @@
-ruby "2.2.1"
-source "https://rubygems.org"
-gem "sinatra"
+source 'https://rubygems.org'
+gem 'sinatra'
+
+group :development, :test do
+  gem 'rack-test'
+  gem 'rspec'
+end
+
+group :development do
+  gem 'rubocop'
+end
