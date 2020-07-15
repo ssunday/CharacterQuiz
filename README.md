@@ -1,25 +1,23 @@
-#Project Name
-
-TAOTATO Character Quiz
-
-## Description
+# TAOTATO Character Quiz
 
 A quiz to determine what member of the Trinity and the One you are. Featuring: Cyclone, King, Spellbinder and Farrco.
 
-### Installation
+## Requirements
 
-Clone the repository onto the desktop.
+- Ruby 2.6.6
 
-### Usage
+## Setup
 
-Enter into the /CharacterQuiz folder and type the following lines on the command line:
+- `bundle install`
+- `ruby main.rb`
 
-```
-bundle install
-ruby main.rb
-```
 And then go to http://localhost:4567/
 
+## Testing
+
+`bundle exec rspec`
 
 ### History
+
 28/1/2016 - First Drafting of it
+14/7/2020 - I resurrect it
