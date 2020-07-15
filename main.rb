@@ -1,12 +1,11 @@
 require 'sinatra'
 require_relative 'lib/questions_and_scoring.rb'
-require_relative 'presenters/quiz_page.rb'
 
 include QuestionsAndScoring
 
 get '/' do
   @title = 'Quiz Home'
-  @view_quiz = QuizPage.new(QUESTIONS_AND_ANSWERS)
+  @questions_and_answers = QUESTIONS_AND_ANSWERS
   erb :home
 end
 

@@ -2,7 +2,14 @@
 <p>This is a quiz to find out which character of you are.</p>
 
 <form action='/results' method='post'>
-  <%= @view_quiz.show_questions_and_answers %>
+  <% @questions_and_answers.each_with_index do |question_answers, question_counter| %>
+    <h3><%= question_answers[0] %></h3>
+
+    <% question_answers[1].each_with_index do |answer, answer_counter| %>
+      <label><%= answer %></label>
+      <input type='radio' name='question <%= question_counter + 1 %>' value= '<%= answer_counter %>' checked/><br>
+    <% end %>
+  <% end %>
 
   <br>
   <h3>That is it! Now submit to see which character you are.</h3>
