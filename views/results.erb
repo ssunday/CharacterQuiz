@@ -1,9 +1,13 @@
-<%= @view_results.show_character_and_image %>
-<br>
-<form action="/breakdown">
-  <button type="submit">See Your Quiz Results Breakdown</button>
-</form>
-<br>
-<form action="/quiz">
+<h1>Your Character is: <%= @character %>!</h1>
+<img src='images/<%= @character %>.png' alt='<%= @character %>' style='width:320px;height:510px;'>
+
+<h2>Results Breakdown:</h2>
+
+<% @scoring_breakdown.each do |character, percentage| %>
+  <p><strong><%= character %></strong></p>
+  <b><%= percentage %>%</b><progress value='<%= percentage %>' max='100'></progress>
+<% end %>
+
+<form action="/">
   <button type="submit">Play Quiz Again</button>
 </form>
