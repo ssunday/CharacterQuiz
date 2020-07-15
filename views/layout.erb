@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf8">
     <title><%= @title + ' | Character Quiz' %></title>
-    <link href="/reset.css" rel="stylesheet">
-    <link href="/style.css" rel="stylesheet">
+    <link href="/reset.css?<%= Time.now.utc.to_i %>" rel="stylesheet">
+    <link href="/style.css?<%= Time.now.utc.to_i %>" rel="stylesheet">
   </head>
   <body>
     <%= yield %>
