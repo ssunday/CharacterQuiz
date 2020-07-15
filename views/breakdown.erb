@@ -1,11 +1,6 @@
-<html>
-<body>
-  <h2> This is the breakdown of what characters you are. </h2>
-  <br>
-  <%= @view_breakdown.show_percentage_breakdown %>
-  <br>
-  <form action="/quiz">
-    <button type="submit">Play Quiz Again</button>
-  </form>
-</body>
-</html>
+<h1>This is the breakdown of what characters you are:</h1>
+<%= @view_breakdown.show_percentage_breakdown %>
+<br>
+<form action="/quiz">
+  <button type="submit">Play Quiz Again</button>
+</form>

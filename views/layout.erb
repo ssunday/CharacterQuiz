@@ -1,19 +1,19 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf8">
-  <title><%= @title + ' | Character Quiz' %></title>
-  <link href="/reset.css" rel="stylesheet">
-  <link href="/style.css" rel="stylesheet">
-</head>
-<body>
-  <header>
-    <hgroup>
-      <h1><a href="/">Character Quiz</a></h1>
-    </hgroup>
-  </header>
-  <div id="main">
-    <%= yield %>
-  </div>
-</body>
+  <head>
+    <meta charset="utf8">
+    <title><%= @title + ' | Character Quiz' %></title>
+    <link href="/reset.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Character Quiz</a>
+      </nav>
+    </header>
+    <div id="main">
+      <%= yield %>
+    </div>
+  </body>
 </html>

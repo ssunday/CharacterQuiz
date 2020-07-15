@@ -1,48 +1,31 @@
 body {
-    margin: 35px auto;
-    width: 640px;
+  border: 2px solid green;
+  margin: 2em auto;
+  padding: 2em;
+  width: 640px;
 }
 
-header {
-    text-align: center;
-    margin: 0 0 20px;
+h1 {
+  font-size: 2em;
+  margin: 1em 0;
 }
 
-header h1 {
-    display: inline;
-    font-size: 32px;
+nav {
+  border-bottom: 4px solid black;
+  padding: 1em;
+
+
 }
 
-header h1 a:link, header h1 a:visited {
-    color: #444;
-    text-decoration: none;
+nav a {
+  font-size: 1.2em;
 }
 
-header h2 {
-    font-size: 16px;
-    font-style: italic;
-    color: #999;
-}
-
-p {
-    margin: 0 0 5px;
-}
-
-
-.meta {
-    font-size: 0.8em;
-    font-style: italic;
-    color: #888;
-}
-
-.links {
-    font-size: 1.8em;
-    line-height: 0.8em;
-    float: right;
-    margin: -10px 0 0;
-}
-
-.links a {
-    display: block;
-    text-decoration: none;
+button, input[type="submit"] {
+  background: #065384;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  padding: 1em 2em;
 }
