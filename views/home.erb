@@ -2,12 +2,12 @@
 <p>This is a quiz to find out which character of you are.</p>
 
 <form action='/results' method='post'>
-  <% @questions_and_answers.each_with_index do |question_answers, question_counter| %>
-    <h3><%= question_answers[0] %></h3>
+  <% @questions_and_answers.each do |question_key, question_data| %>
+    <h3><%= question_data[:question] %></h3>
 
-    <% question_answers[1].each_with_index do |answer, answer_counter| %>
-      <label><%= answer %></label>
-      <input type='radio' name='question <%= question_counter + 1 %>' value= '<%= answer_counter %>' checked/><br>
+    <% question_data[:answers].each do |answer| %>
+      <label><%= answer[0] %></label>
+      <input type='radio' name='<%= question_key %>' value= '<%= answer[0] %>'/><br>
     <% end %>
   <% end %>
 
