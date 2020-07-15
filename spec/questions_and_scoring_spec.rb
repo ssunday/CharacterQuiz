@@ -22,6 +22,24 @@ describe QuestionsAndScoring do
       )
     end
 
+    it 'it gives score based on params - other questions' do
+      params = {
+        weapon: 'Yes',
+        power: 'Flight',
+        music: 'Electronic',
+        social_media: 'Yes'
+      }
+      scores = QuestionsAndScoring.total_quiz_score(params)
+      expect(scores).to eq(
+        cyclone: 4,
+        king: 2,
+        spellbinder: 2,
+        farrco: 6,
+        balon: 2,
+        hequera: 3
+      )
+    end
+
     it 'handles no params' do
       scores = QuestionsAndScoring.total_quiz_score({})
       expect(scores).to eq(

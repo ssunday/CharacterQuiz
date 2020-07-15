@@ -229,8 +229,73 @@ module Questions
           hequera: 2
         }
       }
+    },
+    music: {
+      question: 'Favorite music genre?',
+      answers: {
+        'Hip-hop' => {
+          cyclone: 2,
+          balon: 2
+        },
+        'Classical' => {
+          cyclone: 1,
+          king: 1,
+          spellbinder: 2,
+          farrco: 1
+        },
+        'Rock' => {
+          king: 2,
+          hequera: 2,
+          balon: 1
+        },
+        'Electronic' => {
+          spellbinder: 1,
+          farrco: 2,
+          hequera: 1
+        }
+      }
+    },
+    power: {
+      question: 'Which power would you rather have?',
+      answers: {
+        'Flight' => {
+          farrco: 2,
+          spellbinder: 1,
+          hequera: 2
+        },
+        'Control over an element' => {
+          cyclone: 1,
+          king: 1,
+          balon: 2,
+          spellbinder: 2,
+          hequera: 1
+        },
+        'Invulnerability' => {
+          cyclone: 2,
+          king: 2,
+          balon: 1,
+          farrco: 1
+        }
+      }
+    },
+    social_media: {
+      question: 'Do you use social media?',
+      answers: {
+        'Yes' => {
+          cyclone: 2,
+          farrco: 2
+        },
+        'Sometimes' => {
+          balon: 2,
+          spellbinder: 2
+        },
+        'No' => {
+          king: 2,
+          hequera: 2
+        }
+      }
     }
   }.freeze
 
-  MAX_TOTAL = 20
+  MAX_TOTAL = 26
 end
