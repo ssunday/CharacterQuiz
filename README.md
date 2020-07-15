@@ -17,6 +17,10 @@ And then go to http://localhost:4567/
 
 `bundle exec rspec`
 
+## Linting
+
+`bundle exec rubocop -a -c .rubocop.yml`
+
 ### History
 
 28/1/2016 - First Drafting of it
