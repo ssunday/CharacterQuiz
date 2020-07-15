@@ -1,93 +1,61 @@
+require_relative 'questions.rb'
+
 module QuestionsAndScoring
-  QUESTIONS_AND_ANSWERS = {
-    'What would you say is your best quality?' => %w[Intelligence Loyalty Creativity Compassion],
-    'Which ‘art’ is most important?' => %w[Rationality Spirituality Magic],
-    'If you could have one of these powers, which would you choose?' => ['Flight', 'Control over an element', 'Magic', 'Strength'],
-    'Which is better: Organic or Non-Organic' => %w[Organic Non-Organic],
-    'What do you do when confronted with a problem?' => ['Stick with it.', 'Look for a different angle.'],
-    'What would your iconic piece of attire be?' => %w[Helmet Cape Scarf Necklace],
-    'Should Tyra Tarkush (the holy language) be spoken?' => ['Yes', 'Only in special circumstances', 'No'],
-    'Which one of these Gods would you be mostly likely to worship?' => %w[Ra Hades Ganesh],
-    'Favorite color?' => %w[Red Green Yellow Blue Black White],
-    'Dark or Light?' => %w[Dark Light],
-    'How would you travel?' => ['Space ship', 'Technological Teleportation', 'Magical Teleportation', 'Rifts'],
-    'What is your hobby?' => %w[Reading Philosophy Tinkering Exploring],
-    'Favorite music genre?' => %w[Hip-hop Classical Rock Electronic],
-    'Hogwarts House?' => %w[Gryffindor Slytherin Hufflepuff Ravenclaw],
-    'What do you do when someone insults you?' => ['Insult them back wittily', 'Fight for your honor', 'Take it in stride', 'Ignore'],
-    'How do you feel about Humans?' => ['Strange creatures', 'Inciting', 'No opinion'],
-    'Element?' => %w[Fire Water Air Earth],
-    'Sun or Moon?' => %w[Sun Moon],
-    'Do you use social media?' => %w[Yes Occasionally No],
-    'Which are you more?' => %w[Extroverted Introverted]
+  CHARACTERS = {
+    cyclone: {
+      name: 'Cyclone',
+      image: 'https://www.thespineoftheempire.com/assets/images/art/propaganda/Cyclone-Propaganda.png'
+    },
+    king: {
+      name: 'King',
+      image: 'https://www.thespineoftheempire.com/assets/images/art/propaganda/King-Propaganda.png'
+    },
+    spellbinder: {
+      name: 'Spellbinder',
+      image: 'https://www.thespineoftheempire.com/assets/images/art/propaganda/Spellbinder-Propaganda.png'
+    },
+    farrco: {
+      name: 'Farrco',
+      image: 'https://www.thespineoftheempire.com/assets/images/art/propaganda/Farrco-Propaganda.png'
+    },
+    balon: {
+      name: 'Balon Zfnoctewoohi',
+      image: 'https://www.thespineoftheempire.com/assets/images/art/characters/balon/Balon-Zfnoctewoohi-back.jpg'
+    },
+    hequera: {
+      name: 'Hequera',
+      image: 'https://www.thespineoftheempire.com/assets/images/art/characters/hequera/Hequera-Portrait.jpg'
+    }
   }.freeze
 
-  SCORING_MATRIX = {
-    'question 1' => [[2, 0, 1, 0], [0, 2, 0, 1], [1, 0, 2, 0], [0, 1, 0, 2]],
-    'question 2' => [[1, 2, 0, 1], [2, 1, 1, 2], [0, 0, 2, 0]],
-    'question 3' => [[2, 0, 1, 2], [1, 2, 1, 0], [0, 0, 2, 0], [1, 1, 0, 2]],
-    'question 4' => [[1, 1, 2, 0], [1, 1, 0, 2]],
-    'question 5' => [[0, 2, 1, 1], [2, 0, 1, 1]],
-    'question 6' => [[1, 2, 0, 0], [2, 0, 0, 0], [0, 0, 2, 1], [0, 1, 1, 2]],
-    'question 7' => [[2, 0, 1, 0], [1, 1, 1, 2], [0, 2, 0, 0]],
-    'question 8' => [[0, 0, 2, 1], [0, 1, 0, 0], [0, 1, 1, 1]],
-    'question 9' => [[1, 0, 1, 2], [1, 2, 0, 2], [0, 0, 2, 0], [1, 0, 0, 0], [2, 2, 0, 0], [0, 0, 1, 0]],
-    'question 10' => [[2, 2, 1, 0], [0, 1, 1, 2]],
-    'question 11' => [[1, 2, 0, 0], [0, 1, 0, 2], [0, 0, 2, 0], [1, 0, 1, 2]],
-    'question 12' => [[0, 1, 2, 1], [1, 0, 0, 1], [2, 0, 0, 0], [1, 1, 1, 1]],
-    'question 13' => [[2, 0, 0, 1], [1, 2, 1, 0], [0, 1, 0, 0], [0, 0, 1, 1]],
-    'question 14' => [[0, 2, 0, 1], [2, 0, 1, 0], [0, 1, 0, 2], [1, 0, 2, 0]],
-    'question 15' => [[1, 2, 0, 0], [2, 1, 0, 0], [0, 0, 2, 1], [0, 0, 1, 2]],
-    'question 16' => [[1, 2, 1, 0], [2, 1, 0, 0], [0, 0, 2, 3]],
-    'question 17' => [[0, 1, 0, 2], [2, 0, 1, 0], [0, 0, 2, 0], [1, 2, 0, 1]],
-    'question 18' => [[0, 1, 2, 1], [2, 1, 0, 1]],
-    'question 19' => [[1, 0, 0, 2], [2, 1, 2, 1], [0, 2, 1, 0]],
-    'question 20' => [[2, 0, 1, 1], [0, 2, 1, 1]]
-  }.freeze
+  class << self
+    def total_quiz_score(params)
+      total_scores = CHARACTERS.keys.map do |key|
+        [key, 0]
+      end.to_h
 
-  CHARACTERS = %w[Cyclone King Spellbinder Farrco].freeze
+      questions_and_answers.each do |question, question_data|
+        next unless params[question]
 
-  def total_quiz_score(params)
-    total_score = [0, 0, 0, 0]
-    SCORING_MATRIX.each do |question, scores|
-      question_scores = scores[params[question].to_i]
-      total_score = total_score.zip(question_scores).map { |x, y| y + x }
-    end
-    total_score
-  end
-
-  def determine_character(total_score)
-    max_character_score = total_score.max
-    (0..(CHARACTERS.length - 1)).each do |i|
-      return CHARACTERS[i] if max_character_score == total_score[i]
-    end
-  end
-
-  def total_of_each_character_score
-    total_scores = [0.0, 0.0, 0.0, 0.0]
-    SCORING_MATRIX.each do |_question, scores|
-      (0..(scores.length - 1)).each do |i|
-        total_scores = total_scores.zip(scores[i]).map { |score1, score2| score1 + score2 }
+        question_data[:answers][params[question]].each do |character, val|
+          total_scores[character] += val
+        end
       end
-    end
-    total_scores
-  end
 
-  def percentage_of_each_character(scores)
-    percentages = [0.0, 0.0, 0.0, 0.0]
-    total = total_of_each_character_score
-    (0..(scores.length - 1)).each do |i|
-      percentages[i] = ((scores[i] / total[i]) * 100.0).round
+      total_scores
     end
-    percentages
-  end
 
-  def match_up_characters_to_percentages(scores)
-    characters_percentages = {}
-    percentages = percentage_of_each_character(scores)
-    (0..(percentages.length - 1)).each do |i|
-      characters_percentages[CHARACTERS[i]] = percentages[i]
+    def determine_character(total_score)
+      max_character_score = total_score.max { |a, b| a.last <=> b.last }
+      CHARACTERS[max_character_score.first]
     end
-    characters_percentages
+
+    def determine_character_percentage_breakdown(scores)
+      scores.map { |key, val| [key, ((val / Questions::MAX_TOTAL.to_f) * 100.0).round] }.to_h
+    end
+
+    def questions_and_answers
+      Questions::QUESTIONS_AND_ANSWERS
+    end
   end
 end

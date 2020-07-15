@@ -1,54 +1,121 @@
 require 'rspec'
 require 'questions_and_scoring'
-include QuestionsAndScoring
 
 describe QuestionsAndScoring do
-  describe '#total_of_each_character_score' do
-    it 'correctly totals up scores for each characters' do
-      totals = total_of_each_character_score
-      known_total = [55.0, 55.0, 55.0, 55.0]
-      expect(totals).to eq known_total
+  describe '#total_quiz_score' do
+    it 'it gives score based on params' do
+      params = {
+        quality: 'Creativity',
+        element: 'Earth',
+        intro_extro: 'Extroverted',
+        art: 'Rationality',
+        hogwarts: 'Ravenclaw'
+      }
+      scores = QuestionsAndScoring.total_quiz_score(params)
+      expect(scores).to eq(
+        cyclone: 6,
+        king: 4,
+        spellbinder: 4,
+        farrco: 4,
+        balon: 2,
+        hequera: 2
+      )
+    end
+
+    it 'handles no params' do
+      scores = QuestionsAndScoring.total_quiz_score({})
+      expect(scores).to eq(
+        cyclone: 0,
+        king: 0,
+        spellbinder: 0,
+        farrco: 0,
+        balon: 0,
+        hequera: 0
+      )
     end
   end
 
-  describe '#percentage_of_each_character' do
-    it 'correctly gives percentages' do
-      character_scores = [20, 20, 20, 20]
-      known_percentage = [36.0, 36.0, 36.0, 36.0]
-      percentages = percentage_of_each_character(character_scores)
-      expect(percentages).to eq known_percentage
-    end
-  end
-
-  describe '#match_up_characters_to_percentages' do
+  describe '#determine_character_percentage_breakdown' do
     it 'correctly gives characters and their percentages' do
-      character_scores = [15, 20, 25, 10]
-      known_characters_and_percentages = { CHARACTERS[0] => 27.0, CHARACTERS[1] => 36.0,\
-                                           CHARACTERS[2] => 45.0, CHARACTERS[3] => 18.0 }
-      characters_and_percentages = match_up_characters_to_percentages(character_scores)
-      expect(characters_and_percentages).to eq known_characters_and_percentages
+      character_scores = {
+        cyclone: 12,
+        king: 5,
+        spellbinder: 10,
+        farrco: 3,
+        balon: 0,
+        hequera: 5
+      }
+      characters_and_percentages = QuestionsAndScoring.determine_character_percentage_breakdown(character_scores)
+      expect(characters_and_percentages).to eq(
+        cyclone: 60.0,
+        king: 25.0,
+        spellbinder: 50.0,
+        farrco: 15.0,
+        balon: 0,
+        hequera: 25.0
+      )
     end
   end
 
   describe '#determine_character' do
     it 'returns Cyclone when Cyclone is max' do
-      total_score = [10, 0, 0, 0]
-      expect(determine_character(total_score)).to eq 'Cyclone'
+      total_score = {
+        cyclone: 15.0,
+        king: 5,
+        spellbinder: 2,
+        farrco: 3
+      }
+      expect(QuestionsAndScoring.determine_character(total_score)).to eq(QuestionsAndScoring::CHARACTERS[:cyclone])
     end
 
     it 'returns King when King is max' do
-      total_score = [0, 10, 0, 0]
-      expect(determine_character(total_score)).to eq 'King'
+      total_score = {
+        cyclone: 15.0,
+        king: 25,
+        spellbinder: 2,
+        farrco: 3
+      }
+      expect(QuestionsAndScoring.determine_character(total_score)).to eq(QuestionsAndScoring::CHARACTERS[:king])
     end
 
     it 'returns Spellbinder when Spellbinder is max' do
-      total_score = [0, 0, 10, 0]
-      expect(determine_character(total_score)).to eq 'Spellbinder'
+      total_score = {
+        cyclone: 15.0,
+        king: 5,
+        spellbinder: 22,
+        farrco: 3
+      }
+      expect(QuestionsAndScoring.determine_character(total_score)).to eq(QuestionsAndScoring::CHARACTERS[:spellbinder])
     end
 
     it 'returns Farrco when Farrco is max' do
-      total_score = [0, 0, 0, 10]
-      expect(determine_character(total_score)).to eq 'Farrco'
+      total_score = {
+        cyclone: 15.0,
+        king: 5,
+        spellbinder: 2,
+        farrco: 33
+      }
+      expect(QuestionsAndScoring.determine_character(total_score)).to eq(QuestionsAndScoring::CHARACTERS[:farrco])
+    end
+
+    it 'returns Balon when Balon is max' do
+      total_score = {
+        cyclone: 15.0,
+        king: 5,
+        spellbinder: 2,
+        balon: 33
+      }
+      expect(QuestionsAndScoring.determine_character(total_score)).to eq(QuestionsAndScoring::CHARACTERS[:balon])
+    end
+
+    it 'returns Hequera when Hequera is max' do
+      total_score = {
+        cyclone: 15.0,
+        king: 5,
+        spellbinder: 2,
+        hequera: 33
+      }
+      expect(QuestionsAndScoring.determine_character(total_score)).to eq(QuestionsAndScoring::CHARACTERS[:hequera])
     end
   end
 end

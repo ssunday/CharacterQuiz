@@ -1,20 +1,18 @@
 require 'sinatra'
 require_relative 'lib/questions_and_scoring.rb'
 
-include QuestionsAndScoring
-
 get '/' do
   @title = 'Quiz Home'
-  @questions_and_answers = QUESTIONS_AND_ANSWERS
+  @questions_and_answers = QuestionsAndScoring.questions_and_answers
   erb :home
 end
 
 post '/results' do
   @title = 'Quiz Results'
 
-  scores = total_quiz_score(params)
-  @character = determine_character(scores)
-  @scoring_breakdown = match_up_characters_to_percentages(scores)
+  scores = QuestionsAndScoring.total_quiz_score(params)
+  @character = QuestionsAndScoring.determine_character(scores)
+  @scoring_breakdown = QuestionsAndScoring.determine_character_percentage_breakdown(scores)
 
   erb :results
 end
