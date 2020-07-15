@@ -4,21 +4,6 @@ class QuizPage
   end
 
   def show_questions_and_answers
-    questions_and_answers_list = ''
-    questions_and_answers_list += start_form
-    questions_and_answers_list += add_questions_with_answers
-    questions_and_answers_list += end_message
-    questions_and_answers_list += end_form
-    questions_and_answers_list
-  end
-
-  private
-
-  def start_form
-    "<form action='/quiz' method='post'>"
-  end
-
-  def add_questions_with_answers
     questions_with_answers = ''
     question_counter = 1
     @questions_and_answers.each do |question, answers|
@@ -29,6 +14,8 @@ class QuizPage
     questions_with_answers
   end
 
+  private
+
   def add_answers(answers, question_number)
     question_answers = ''
     answer_counter = 0
@@ -37,14 +24,6 @@ class QuizPage
       answer_counter += 1
     end
     question_answers
-  end
-
-  def end_message
-    '<br><h2>That is it! Now submit to see which character you are. </h2>'
-  end
-
-  def end_form
-    '<br><br><input type="submit"></form>'
   end
 
   def insert_question(question)

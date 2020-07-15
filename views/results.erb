@@ -1,9 +1,8 @@
 <%= @view_results.show_character_and_image %>
-<br>
-<form action="/breakdown">
-  <button type="submit">See Your Quiz Results Breakdown</button>
-</form>
-<br>
-<form action="/quiz">
+
+<h2>Results Breakdown:</h1>
+<%= @view_breakdown.show_percentage_breakdown %>
+
+<form action="/">
   <button type="submit">Play Quiz Again</button>
 </form>

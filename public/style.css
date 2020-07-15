@@ -10,11 +10,13 @@ h1 {
   margin: 1em 0;
 }
 
+h3 {
+  margin: 0.5em 0;
+}
+
 nav {
   border-bottom: 4px solid black;
   padding: 1em;
-
-
 }
 
 nav a {
@@ -27,5 +29,6 @@ button, input[type="submit"] {
   border-radius: 5px;
   color: white;
   font-weight: bold;
+  margin: 1em 0;
   padding: 1em 2em;
 }

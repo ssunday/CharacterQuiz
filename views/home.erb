@@ -1,4 +1,11 @@
-<h1>This is a quiz to find out which character of the Adventures of the Trinity and the One you are.</h1>
-<form action="/quiz">
-  <button type="submit">Play Quiz</button>
+<h1>The Adventures of the Trinity and the One Character Quiz</h1>
+<p>This is a quiz to find out which character of you are.</p>
+
+<form action='/results' method='post'>
+  <%= @view_quiz.show_questions_and_answers %>
+
+  <br>
+  <h3>That is it! Now submit to see which character you are.</h3>
+
+  <input type="submit">
 </form>

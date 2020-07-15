@@ -20,23 +20,11 @@ describe 'Character Quiz Web App' do
       get '/'
       expect(last_response).to be_ok
     end
-
-    it 'quiz page' do
-      get '/quiz'
-      expect(last_response).to be_ok
-    end
   end
 
-  it 'post quiz redirects to results' do
-    post '/quiz'
-    follow_redirect!
-    expect(last_request.path).to eq('/results')
-  end
+  it 'post results is OK' do
+    post '/results'
 
-  it 'post quiz redirects to results and can go to breakdown' do
-    post '/quiz'
-    follow_redirect!
-    get '/breakdown'
     expect(last_response).to be_ok
   end
 end
