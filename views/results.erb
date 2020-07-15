@@ -1,10 +1,10 @@
-<h1>Your Character is: <%= @character %>!</h1>
-<img src='images/<%= @character %>.png' alt='<%= @character %>' style='width:320px;height:510px;'>
+<h1>Your Character is: <%= @character[:name] %>!</h1>
+<img src='<%= @character[:image] %>' alt='<%= @character[:name] %>' style='width:320px;height:510px;'>
 
 <h2>Results Breakdown:</h2>
 
 <% @scoring_breakdown.each do |character, percentage| %>
-  <p><strong><%= character %></strong></p>
+  <p><strong><%= character.upcase %></strong></p>
   <b><%= percentage %>%</b><progress value='<%= percentage %>' max='100'></progress>
 <% end %>
 
