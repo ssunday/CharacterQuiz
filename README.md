@@ -4,8 +4,6 @@ A quiz to determine what member of the Trinity and the One you are. For more inf
 
 Featuring: Cyclone, King, Spellbinder, Farrco, Balon, and Hequera
 
-[Try it on Heroku](https://spine-character-quiz.herokuapp.com)
-
 ## Requirements
 
 - Ruby 2.6.6
